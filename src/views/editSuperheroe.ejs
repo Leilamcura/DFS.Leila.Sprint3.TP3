@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Superhéroe</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <h1>Editar Superhéroe 📝</h1>
+
+  <form method="POST" action="/api/heroes/<%= superheroe._id %>?_method=PUT"> 
+    <!-- 68837861574a287597af5c6e -->
+    <label>Nombre del Superhéroe:</label>
+    <input
+      type="text"
+      name="nombreSuperHeroe"
+      value="<%= superheroe.nombreSuperHeroe %>"
+      required
+      minlength="3"
+      maxlength="60"
+      pattern="\S(.*\S)?"
+      title="Debe tener entre 3 y 60 caracteres sin espacios al inicio o fin"
+    />
+
+    <label>Nombre Real:</label>
+    <input
+      type="text"
+      name="nombreReal"
+      value="<%= superheroe.nombreReal %>"
+      required
+      minlength="3"
+      maxlength="60"
+      pattern="\S(.*\S)?"
+      title="Debe tener entre 3 y 60 caracteres sin espacios al inicio o fin"
+    />
+
+    <label>Edad:</label>
+    <input
+      type="number"
+      name="edad"
+      value="<%= superheroe.edad %>"
+      required
+      min="0"
+      inputmode="numeric"
+      step="1"
+      pattern="\d+"
+      title="Ingrese un número entero mayor o igual a 0"
+    />
+
+    <label>Planeta de Origen:</label>
+    <input
+      type="text"
+      name="planetaOrigen"
+      value="<%= superheroe.planetaOrigen %>"
+      required
+      minlength="3"
+      maxlength="60"
+      pattern="\S(.*\S)?"
+      title="Debe tener entre 3 y 60 caracteres sin espacios al inicio o fin"
+    />
+
+    <label>Debilidad:</label>
+    <input
+      type="text"
+      name="debilidad"
+      value="<%= superheroe.debilidad %>"
+      required
+      minlength="3"
+      maxlength="60"
+      pattern="\S(.*\S)?"
+      title="Debe tener entre 3 y 60 caracteres sin espacios al inicio o fin"
+    />
+
+    <label>Poderes (separados por comas):</label>
+    <input
+      type="text"
+      name="poderes"
+      value="<%= superheroe.poderes.join(', ') %>"
+      required
+      pattern="(\s*\S.{2,58}\S\s*)(\s*,\s*\S.{2,58}\S\s*)*"
+      title="Cada poder debe tener entre 3 y 60 caracteres, sin espacios al inicio o fin, separados por comas"
+    />
+
+    <label>Aliados (separados por comas):</label>
+    <input
+      type="text"
+      name="aliados"
+      value="<%= superheroe.aliados.join(', ') %>"
+      pattern="(\s*\S.{2,58}\S\s*)(\s*,\s*\S.{2,58}\S\s*)*"
+      title="Cada aliado debe tener entre 3 y 60 caracteres, sin espacios al inicio o fin, separados por comas"
+    />
+
+    <label>Enemigos (separados por comas):</label>
+    <input
+      type="text"
+      name="enemigos"
+      value="<%= superheroe.enemigos.join(', ') %>"
+      pattern="(\s*\S.{2,58}\S\s*)(\s*,\s*\S.{2,58}\S\s*)*"
+      title="Cada enemigo debe tener entre 3 y 60 caracteres, sin espacios al inicio o fin, separados por comas"
+    />
+
+    <label>Creador:</label>
+    <input
+      type="text"
+      name="creador"
+      value="<%= superheroe.creador %>"
+      maxlength="60"
+      pattern="\S(.*\S)?"
+      title="Máximo 60 caracteres sin espacios al inicio o fin"
+    />
+
+    <button type="submit">Actualizar Superhéroe</button>
+  </form>
+</body>
+</html>

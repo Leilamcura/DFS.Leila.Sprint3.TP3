@@ -1,0 +1,36 @@
+<!-- Requerimiento: Crear la vista principal del dashboard (views/dashboard.ejs): 
+Mostrar la lista de superhéroes utilizando el endpoint /heroes. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard de Superhéroes</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <h1>Superhéroes Registrados 🦸</h1>
+
+  <ul>
+    <% superheroes.forEach(superheroe => { %>
+      <li>
+        <h2><%= superheroe.nombreSuperHeroe %></h2>
+        <p><strong>Nombre real:</strong> <%= superheroe.nombreReal %></p>
+        <p><strong>Edad:</strong> <%= superheroe.edad %> años</p>
+        <p><strong>Planeta:</strong> <%= superheroe.planetaOrigen %></p>
+        <p><strong>Debilidad:</strong> <%= superheroe.debilidad || 'No registrada' %></p>
+        <p><strong>Poderes:</strong> <%= superheroe.poderes.length > 0 ? superheroe.poderes.join(', ') : 'Sin poderes definidos' %></p>
+        <p><strong>Aliados:</strong> <%= superheroe.aliados.length > 0 ? superheroe.aliados.join(', ') : 'Sin aliados' %></p>
+        <p><strong>Enemigos:</strong> <%= superheroe.enemigos.length > 0 ? superheroe.enemigos.join(', ') : 'Sin enemigos conocidos' %></p>
+        <p><strong>Creador:</strong> <%= superheroe.creador || 'Desconocido' %></p>
+        <p><strong>Registrado en:</strong> <%= new Date(superheroe.createdAT).toLocaleDateString() %></p>
+
+        <!-- Botón Eliminar -->
+        <form method="POST" action="/heroes/<%= superheroe._id %>?_method=DELETE">
+          <button type="submit">Eliminar</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>
