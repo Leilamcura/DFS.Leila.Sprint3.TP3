@@ -1,0 +1,160 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #FFF9F0; /* fondo general */
+  font-family: 'Quicksand', sans-serif;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+}
+
+.tarjetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 20px;
+  list-style: none;
+  justify-content: center;
+}
+
+.card {
+  background-color: #FFE66D; /* amarillo pastel intenso */
+  border: 2px solid #FFA552; /* borde naranja vibrante */
+  border-radius: 14px;
+  padding: 20px;
+  width: 320px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s ease;
+}
+
+.card:hover {
+  transform: scale(1.04);
+}
+
+.card h2 {
+  margin-top: 0;
+  color: #CC5500; /* naranja intenso */
+}
+
+.card p {
+  margin: 8px 0;
+  color: #444;
+}
+
+.acciones {
+  margin-top: 16px;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+/* Botón editar – verde pastel vibrante */
+.acciones button[type="button"] {
+  background-color: #A3D9A5;
+  color: #2C6E49;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.acciones button[type="button"]:hover {
+  background-color: #91C89B;
+}
+
+/* Botón eliminar – naranja pastel vibrante */
+.acciones .delete-btn {
+  background-color: #FFA552;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.acciones .delete-btn:hover {
+  background-color: #FF8A3D;
+}
+
+/* Contenedor de botones al final */
+.acciones {
+  margin-top: auto;
+  display: flex;
+  gap: 8px; /* reducido para que queden más juntos */
+  justify-content: flex-end;
+  padding-top: 12px;
+}
+
+.form-container {
+  background-color: #FFE66D; /* amarillo pastel intenso */
+  border: 2px solid #FFA552; /* borde naranja vibrante */
+  border-radius: 14px;
+  padding: 20px;
+  width:50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s ease;
+  margin: 30px auto;
+}
+
+/* form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 2rem;
+  max-width: 800px;
+  width: 100%;
+  text-align: left;
+} */
+
+label {
+  font-weight: bold;
+  grid-column: span 2; /* hace que cada label ocupe las dos columnas */
+}
+
+input {
+  grid-column: span 2;
+  width: 60%;     /* ancho fijo */
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #d0d0d0;
+  border-radius: 0.5rem;
+  background-color: #f9f6ff;   /* tono pastel suave */
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+  border: 2px solid #1fdd68;
+  outline: none;
+}
+
+button {
+  grid-column: span 2;
+  margin-top: 1rem;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  background-color: #cc451c;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #FFA552;
+}
+
+
+.centrar-boton {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Puedes ajustar este valor si deseas separarlo de otros elementos */
+}
+

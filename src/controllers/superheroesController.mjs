@@ -10,7 +10,6 @@ import {
   editarSuperheroeService,
   eliminarSuperheroePorIdService,
   eliminarSuperheroePorNombreService,
-  agregarSuperheroeService
 } from "../services/superheroesService.mjs";
 
 import {
@@ -118,25 +117,58 @@ export async function crearSuperheroeController(req, res) {
 
 // Editar/actualizar superheroe
 
+// export async function editarSuperheroeController(req, res) {
+//   try {
+//     // const { nombreSuperheroe } = req.params;
+//     const { id } = req.params;
+//     const datos = req.body;
+//     console.log(
+//       "Estoy en la capa del controlador, en la funcion editarSuperheroeController y llegó esta informacion: ",
+//       datos
+//     );
+//     const superheroe = await editarSuperheroeService(id, datos);
+//     if (superheroe) {
+//       res.send(renderizarSuperheroe(superheroe));
+//     } else {
+//       res.status(400).send({ mensaje: "No se pudo editar el superhéroe" });
+//     }
+//   } catch (error) {
+//     console.error("Error en editarSuperheroeController:", error);
+//     res.status(500).send({ mensaje: "Error interno del servidor" });
+//   }
+// }
+// OTRO:
+// export async function actualizarSuperheroeController(req, res) {
+//     try {
+//     const {id}= req.params;
+//     const nuevosDatos= req.body;
+//     const superheroeActualizado = await actualizarSuperheroe(id,nuevosDatos);
+//    res.redirect('http://localhost:3000/api/dashboard');
+ 
+//     } catch (error) {
+//         res.status(500).send({mensaje:'Superheroe con ID incorrecto o inexistente'}); 
+//     }
+// }
 export async function editarSuperheroeController(req, res) {
-  try {
-    const { nombreSuperheroe } = req.params;
-    const datos = req.body;
-    console.log(
-      "Estoy en la capa del controlador, en la funcion editarSuperheroeController y llegó esta informacion: ",
-      datos
-    );
-    const superheroe = await editarSuperheroeService(nombreSuperheroe, datos);
-    if (superheroe) {
-      res.send(renderizarSuperheroe(superheroe));
-    } else {
-      res.status(400).send({ mensaje: "No se pudo editar el superhéroe" });
+    try {
+        const { id } = req.params;
+        const datos = req.body;
+               
+        const superheroe = await editarSuperheroeService(id, datos);
+        if (superheroe) {
+            //  res.send(renderizarSuperheroe(superheroe));
+            const superheroes =await obtenerTodosLosSuperheroes();
+            res.render('dashboard', { superheroes }); // renderizado EJS
+        } else {
+            res.status(400).send({ mensaje: "No se pudo editar el superhéroe" });
+        }
+    } catch (error) {
+        console.error("Error en editarSuperheroeController:", error);
+        res.status(500).send({ mensaje: "Error interno del servidor" });
     }
-  } catch (error) {
-    console.error("Error en editarSuperheroeController:", error);
-    res.status(500).send({ mensaje: "Error interno del servidor" });
-  }
 }
+
+
 
 // Eliminar Superheroe por ID
 
@@ -145,7 +177,9 @@ export async function eliminarSuperheroePorIdController(req, res) {
     const { id } = req.params;
     const superheroe = await eliminarSuperheroePorIdService(id);
     if (superheroe) {
-      res.send(renderizarSuperheroe(superheroe));
+      // res.send(renderizarSuperheroe(superheroe));
+      const superheroes =await obtenerTodosLosSuperheroes();
+     res.render('dashboard', { superheroes }); // renderizado EJS
     } else {
       res
         .status(400)
@@ -185,7 +219,9 @@ export async function eliminarSuperheroePorNombreController(req, res) {
          const datos = req.body;
          const superheroe = await crearSuperheroeService(datos);
          if (superheroe) {
-             res.send(renderizarSuperheroe(superheroe));
+            //  res.send(renderizarSuperheroe(superheroe));
+            const superheroes =await obtenerTodosLosSuperheroes();
+            res.render('dashboard', { superheroes }); // renderizado EJS
          } else {
              res.status(400).send({ mensaje: "No se pudo crear el superhéroe" });
          }
@@ -195,7 +231,7 @@ export async function eliminarSuperheroePorNombreController(req, res) {
      }
  }
 
- // Formulario de edicion
+ // Carga los datos a editar en el Formulario
 
  export async function formActualizarHeroeController(req, res) {
     try {

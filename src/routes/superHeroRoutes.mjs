@@ -12,7 +12,8 @@ import {
     eliminarSuperheroePorIdController,
     eliminarSuperheroePorNombreController,
     agregarSuperheroeController,
-    formActualizarHeroeController
+    formActualizarHeroeController,
+    //actualizarSuperheroeController
 } from '../controllers/superheroesController.mjs';
 
 // Para cumplir con los requerimientos del Sprint3 TP2 validar y sanitizar
@@ -35,10 +36,8 @@ router.get('/heroes', obtenerTodosLosSuperheroesController);
 router.post('/heroes/agregar', heroesValidationRules(), heroesHandleValidationErrors, agregarSuperheroeController)
 
 // Agregar una ruta PUT /heroes/:id/editar en superheroesRoutes.mjs
-router.put('/heroes/:id', heroesValidationRules(), heroesHandleValidationErrors, editarSuperheroeController);
-
-
-router.get('/formEditarHeroe/:id', formActualizarHeroeController);
+router.get('/formEditarHeroe/:id', formActualizarHeroeController); //busca y carga los datos en el form
+router.put('/heroes/actualizar/:id', heroesValidationRules(), heroesHandleValidationErrors, editarSuperheroeController);
 
 // Agregado de requerimiento Sprint3 TP3: Formularios
 // Agregar
@@ -51,16 +50,12 @@ router.get('/formAgregarHeroe', (req, res) => {
 // });
 
 
-
-
 // router.get("/form-agregar-heroe", (req, res) => {
 //   res.render("addSuperheroe")
 // })
 //router.get('/formAgregarHero',formAgregarHeroController);
 // router.get('/formEditarHero/:id',formActualizarHeroeController);
 // router.get('/confirmarEliminar/:id', confirmarEliminacionController);
-
-
 
 router.delete('/heroes/eliminar/:id', eliminarSuperheroePorIdController);
 router.delete('/heroes/eliminar-nombre/:nombreSuperheroe', eliminarSuperheroePorNombreController);

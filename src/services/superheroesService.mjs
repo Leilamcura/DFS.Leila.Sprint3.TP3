@@ -54,9 +54,9 @@ export async function crearSuperheroeService(datos) {
 }
 
 // Editar/actualizar Superheroe
-export async function editarSuperheroeService(nombreSuperheroe, datos) {
+export async function editarSuperheroeService(id, datos) {
     try {
-        return await superHeroRepository.editarSuperheroe(nombreSuperheroe, datos);
+        return await superHeroRepository.editarSuperheroe(id, datos);
     } catch (error) {
         console.error("Ocurrió un error al editarSuperheroeService:", error);
         throw error;
@@ -94,3 +94,9 @@ export async function agregarSuperheroeService(datos) {
         throw error;
     }
 }
+
+//Actualizar
+
+export async function actualizarSuperheroe(id, nuevosDatos) {
+        return await superHeroRepository.actualizarSuperheroe(id, nuevosDatos);
+    }

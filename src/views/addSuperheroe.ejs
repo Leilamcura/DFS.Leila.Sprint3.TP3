@@ -1,78 +1,57 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="UTF-8" />
-  <title>Agregar Superhéroe</title>
-  <link rel="stylesheet" href="/style.css" />
+    <meta charset="UTF-8" />
+    <title>Agregar Superhéroe</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <h1>Registrar Superhéroe 🦸‍♀️</h1>
+    <h1>Registrar Superhéroe 🦸‍♀️</h1>
+ <div class="form-container">
+    <form method="POST" action="/api/heroes/agregar">
 
-  <form method="POST" action="/api/heroes/agregar">
-    <!-- <label>Nombre del Superhéroe:</label>
-    <input type="text" name="nombreSuperHeroe" required minlength="3" maxlength="60" />
 
-    <label>Nombre Real:</label>
-    <input type="text" name="nombreReal" required />
+        <label>Nombre del Superhéroe:</label>
+        <input type="text" name="nombreSuperHeroe" required minlength="3" maxlength="60" pattern="\S(.*\S)?"
+            title="Debe tener entre 3 y 60 caracteres, sin espacios al inicio o fin" />
 
-    <label>Edad:</label>
-    <input type="number" name="edad" min="0" />
+        <label>Nombre Real:</label>
+        <input type="text" name="nombreReal" required minlength="3" maxlength="60" pattern="\S(.*\S)?"
+            title="Debe tener entre 3 y 60 caracteres sin espacios al inicio o fin" />
 
-    <label>Planeta de Origen:</label>
-    <input type="text" name="planetaOrigen" />
+        <label>Edad:</label>
+        <input type="number" name="edad" required min="0" inputmode="numeric" step="1" pattern="\d+"
+            title="Ingrese un número entero mayor o igual a 0" />
 
-    <label>Debilidad:</label>
-    <input type="text" name="debilidad" />
+        <label>Planeta de Origen:</label>
+        <input type="text" name="planetaOrigen" required minlength="3" maxlength="60" pattern="\S(.*\S)?"
+            title="Debe tener entre 3 y 60 caracteres sin espacios al inicio o fin" />
 
-    <label>Poderes (separados por comas):</label>
-    <input type="text" name="poderes" placeholder="Ej: vuelo, fuerza, invisibilidad" />
+        <label>Debilidad:</label>
+        <input type="text" name="debilidad" required minlength="3" maxlength="60" pattern="\S(.*\S)?"
+            title="Debe tener entre 3 y 60 caracteres sin espacios al inicio o fin" />
 
-    <label>Aliados (separados por comas):</label>
-    <input type="text" name="aliados" placeholder="Ej: Batman, Robin" />
+        <label>Poderes (separados por comas):</label>
+        <input type="text" name="poderes" required pattern="(\s*\S.{2,58}\S\s*)(\s*,\s*\S.{2,58}\S\s*)*"
+            title="Ingrese al menos un poder. Cada poder debe tener entre 3 y 60 caracteres, sin espacios al inicio ni al final, separados por comas" />
 
-    <label>Enemigos (separados por comas):</label>
-    <input type="text" name="enemigos" placeholder="Ej: Lex Luthor, Thanos" />
+        <label>Aliados (separados por comas):</label>
+        <input type="text" name="aliados" required pattern=".{3,}" title="Cada aliado debe tener mínimo 3 caracteres" />
 
-    <label>Creador:</label>
-    <input type="text" name="creador" />
+        <label>Enemigos (separados por comas):</label>
+        <input type="text" name="enemigos" required pattern=".{3,}"
+            title="Cada enemigo debe tener mínimo 3 caracteres" />
 
-    <button type="submit">Agregar Superhéroe</button> -->
-    
-<label>Nombre del Superhéroe:</label>
-<input type="text" name="nombreSuperHeroe" required minlength="3" maxlength="60" pattern="\S(.*\S)?"
-    title="Debe tener entre 3 y 60 caracteres, sin espacios al inicio o fin" />
+        <label>Creador:</label>
+        <input type="text" name="creador" required maxlength="60" />
 
-<label>Nombre Real:</label>
-<input type="text" name="nombreReal" required minlength="3" maxlength="60" pattern="\S(.*\S)?"
-    title="Debe tener entre 3 y 60 caracteres sin espacios al inicio o fin" />
+        <button type="submit">Guardar Superhéroe</button>
 
-<label>Edad:</label>
-<input type="number" name="edad" required min="0" inputmode="numeric" step="1" pattern="\d+"
-    title="Ingrese un número entero mayor o igual a 0" />
-
-<label>Planeta de Origen:</label>
-<input type="text" name="planetaOrigen" required minlength="3" maxlength="60" pattern="\S(.*\S)?"
-    title="Debe tener entre 3 y 60 caracteres sin espacios al inicio o fin" />
-
-<label>Debilidad:</label>
-<input type="text" name="debilidad" required minlength="3" maxlength="60" pattern="\S(.*\S)?"
-    title="Debe tener entre 3 y 60 caracteres sin espacios al inicio o fin" />
-
-<label>Poderes (separados por comas):</label>
-<input type="text" name="poderes" required pattern="(\s*\S.{2,58}\S\s*)(\s*,\s*\S.{2,58}\S\s*)*"
-    title="Ingrese al menos un poder. Cada poder debe tener entre 3 y 60 caracteres, sin espacios al inicio ni al final, separados por comas" />
-
-<label>Aliados (separados por comas):</label>
-<input type="text" name="aliados" required pattern=".{3,}" title="Cada aliado debe tener mínimo 3 caracteres" />
-
-<label>Enemigos (separados por comas):</label>
-<input type="text" name="enemigos" required pattern=".{3,}" title="Cada enemigo debe tener mínimo 3 caracteres" />
-
-<label>Creador:</label>
-<input type="text" name="creador" required maxlength="60" />
-
-<button type="submit">Guardar Superhéroe</button>
-
-</form>
+    </form>
+    </div>
 </body>
+
 </html>

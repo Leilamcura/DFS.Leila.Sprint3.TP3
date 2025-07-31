@@ -6,12 +6,38 @@ Mostrar la lista de superhéroes utilizando el endpoint /heroes. -->
 <head>
   <meta charset="UTF-8">
   <title>Dashboard de Superhéroes</title>
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <h1>Superhéroes Registrados 🦸</h1>
+  <div class="centrar-boton">
+        <button type="button" onclick="window.location.href='/api/formAgregarHeroe'"> Nuevo Superhéroe </button>
+  </div>
+  <ul class="tarjetas">
+  <% superheroes.forEach(superheroe => { %>
+    <li class="card">
+      <h2><%= superheroe.nombreSuperHeroe %></h2>
+      <p><strong>Nombre real:</strong> <%= superheroe.nombreReal %></p>
+      <p><strong>Edad:</strong> <%= superheroe.edad %> años</p>
+      <p><strong>Planeta:</strong> <%= superheroe.planetaOrigen %></p>
+      <p><strong>Debilidad:</strong> <%= superheroe.debilidad || 'No registrada' %></p>
+      <p><strong>Poderes:</strong> <%= superheroe.poderes.length > 0 ? superheroe.poderes.join(', ') : 'Sin poderes definidos' %></p>
+      <p><strong>Aliados:</strong> <%= superheroe.aliados.length > 0 ? superheroe.aliados.join(', ') : 'Sin aliados' %></p>
+      <p><strong>Enemigos:</strong> <%= superheroe.enemigos.length > 0 ? superheroe.enemigos.join(', ') : 'Sin enemigos conocidos' %></p>
+      <p><strong>Creador:</strong> <%= superheroe.creador || 'Desconocido' %></p>
+      <p><strong>Registrado en:</strong> <%= new Date(superheroe.createdAT).toLocaleDateString() %></p>
 
-  <ul>
+      <div class="acciones">
+        <button type="button" onclick="window.location.href='/api/formEditarHeroe/<%= superheroe._id %>'">Editar</button>
+        <form action="/api/heroes/eliminar/<%= superheroe._id %>?_method=DELETE" method="POST" style="display:inline;" onsubmit="return confirm('¿Confirma la eliminación de <%= superheroe.nombreSuperHeroe %>?');">
+          <button type="submit" class="delete-btn">Eliminar</button>
+        </form>
+      </div>
+    </li>
+  <% }) %>
+</ul>
+  <!-- <ul>
     <% superheroes.forEach(superheroe => { %>
       <li>
         <h2><%= superheroe.nombreSuperHeroe %></h2>
@@ -25,12 +51,16 @@ Mostrar la lista de superhéroes utilizando el endpoint /heroes. -->
         <p><strong>Creador:</strong> <%= superheroe.creador || 'Desconocido' %></p>
         <p><strong>Registrado en:</strong> <%= new Date(superheroe.createdAT).toLocaleDateString() %></p>
 
-        <!-- Botón Eliminar -->
-        <form method="POST" action="/heroes/<%= superheroe._id %>?_method=DELETE">
-          <button type="submit">Eliminar</button>
-        </form>
+        
+        <div class="acciones">
+          <button type="button" onclick="window.location.href='/api/formEditarHeroe/<%= superheroe._id %>'"> Editar </button>
+          <form action="/api/heroes/eliminar/<%= superheroe._id %>?_method=DELETE" method="POST" style="display:inline;" onsubmit="return confirm('¿Seguro que querés borrar a <%= superheroe.nombreSuperHeroe %>?');">
+            <button type="submit" class="delete-btn"> Eliminar </button>
+          </form>
+        </div>
+
       </li>
     <% }) %>
-  </ul>
+  </ul> -->
 </body>
 </html>
